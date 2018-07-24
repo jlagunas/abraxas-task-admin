@@ -1,6 +1,7 @@
 'use strict'
 
-module.exports.controller = require('./controller')
 module.exports.config = require('./config')
+module.exports.controller = require('./controller')
+module.exports.validator = require('./validator')
 
 // '.- -- -.. --.'

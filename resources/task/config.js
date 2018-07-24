@@ -1,8 +1,11 @@
 'use strict'
 
 require('rootpath')()
+const Model = require('./model')
 
 module.exports = (req, res, next) => {
+  req.Model = Model(__db)
+
   req.data = undefined
   req.errors = undefined
   req.module_name = 'tareas'
