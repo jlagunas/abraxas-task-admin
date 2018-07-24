@@ -21,7 +21,7 @@ async function create (req, res, next) {
     next()
     return null
   }
-s
+
   req.is_success_created = true
   req.data = taskCreated.dataValues
 
