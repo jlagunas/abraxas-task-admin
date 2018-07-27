@@ -5,10 +5,15 @@ const _ = require('lodash')
 const sequelize = require('sequelize')
 const { to } = require('await-to-js')
 
-function get_where_filters(query_in_request) {
-  if (query_in_request) {
+function get_where_filters(query) {
+  if (query.q && query.q !== '') {
     return {
-      description: { [sequelize.Op.like]: `%${query_in_request}%` } }
+      description: { [sequelize.Op.like]: `%${query.q}%` } }
+  }
+
+  if (query.status && query.status !== '') {
+    return {
+      status: { [sequelize.Op.like]: `%${query.status}%` } }
   }
 
   return {}
@@ -119,10 +124,10 @@ async function get (req, res, next) {
     return null
   }
 
-  const query_in_request = req.query.q
+  const query_in_request = req.query
   const [errGet, tasksGetted] = await to(
     req.Model.findAll({
-      where: get_where_filters(req.query.q),
+      where: get_where_filters(req.query),
       raw: true
     })
   )

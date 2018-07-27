@@ -27,7 +27,20 @@ const Task = (db) => {
       type: Sequelize.ENUM('pending', 'completed'),
       allowNull: true,
       defaultValue: 'pending'
+    },
+    created_at: {
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW
+    },
+    updated_at: {
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW
     }
+  },
+  {
+    timestamps: false
   })
 }
 

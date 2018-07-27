@@ -69,6 +69,14 @@ app
     resources.task.controller.destroy,
     prepare_response)
 
+// [POST] preloaded
+app
+  .post(
+    '/preloaded',
+    resources.preloaded.config,
+    resources.preloaded.controller,
+  prepare_response)
+
 app
   .listen(config.port, () => {
     console.log(`Abraxas API running in ${config.domain}`)
