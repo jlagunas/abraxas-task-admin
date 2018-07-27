@@ -1,0 +1,34 @@
+{
+  "name": "abraxas-task-admin",
+  "version": "1.0.0",
+  "description": "Task administrator for abraxas testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run mocha execute-tests -b -t 15000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlagunas/abraxas-task-admin.git"
+  },
+  "keywords": [
+    "task",
+    "administrator"
+  ],
+  "author": "jlagunas",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jlagunas/abraxas-task-admin/issues"
+  },
+  "homepage": "https://github.com/jlagunas/abraxas-task-admin#readme",
+  "dependencies": {
+    "await-to-js": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "data2xml": "^1.2.5",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "mysql2": "^1.5.3",
+    "rootpath": "^0.1.2",
+    "sequelize": "^4.38.0"
+  }
+}
