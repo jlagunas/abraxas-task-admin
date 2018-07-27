@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/jlagunas/abraxas-task-admin#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "await-to-js": "^2.0.1",
     "data2xml": "^1.2.5",
     "express": "^4.16.3",

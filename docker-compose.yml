@@ -2,7 +2,7 @@ version: '2'
 services:
   web:
     build: .
-    command: node index.js
+    command: nodemon index.js
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules
@@ -19,8 +19,3 @@ services:
       MYSQL_DATABASE: abraxas_task_admin
     ports:
       - "3307:3306"
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8080:8080"
