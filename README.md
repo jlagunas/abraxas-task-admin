@@ -5,10 +5,6 @@ Technical test for abraxas backend developer
 
 ## Up and running development environment
 
-### Stack
-- Node.JS / express
-- MySQL 5.7 / sequelize
-
 ### Requirements
 - Docker
 - Docker compose
@@ -17,6 +13,10 @@ Technical test for abraxas backend developer
 ```sh
 docker-compose up
 ```
+
+### Stack
+- Node.JS / express
+- MySQL 5.7 / sequelize
 
 ## API documentation
 
@@ -33,12 +33,12 @@ POST http://localhost:3000/tasks
 ```
 ### params
 
-| name             |   type                    |   required  |
-|:-----------------|---------------------------|------------:|
-| description      | string                    |    yes      |
-| estimated_time   | int                       |    yes      |
-| registered_time  | int                       |    yes      |
-| status           | ENUM[pending, completed]  |    no       |
+| name             |   type                    |   required  |  default  |
+|:-----------------|---------------------------|------------:|----------:|
+| description      | string                    |    yes      | none      |
+| estimated_time   | int                       |    no       | 0         |
+| registered_time  | int                       |    no       | 0         |
+| status           | ENUM[pending, completed]  |    no       | pending   |
 
 ### Update a task
 **Note:** You cannot update a completed task
@@ -48,12 +48,12 @@ PUT http://localhost:3000/tasks/:taskId
 ```
 ### params
 
-| name             |   type                    |   required  |
-|:-----------------|---------------------------|------------:|
-| description      | string                    |    yes      |
-| estimated_time   | int                       |    yes      |
-| registered_time  | int                       |    yes      |
-| status           | ENUM[pending, completed]  |    no       |
+| name             |   type                    |   required  |  default  |
+|:-----------------|---------------------------|------------ |----------:|
+| description      | string                    |    yes      | none      |
+| estimated_time   | int                       |    no       | 0         |
+| registered_time  | int                       |    no       | 0         |
+| status           | ENUM[pending, completed]  |    no       | pending   |
 
 ### GET all tasks
 ```
