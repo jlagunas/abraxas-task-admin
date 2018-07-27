@@ -20,7 +20,7 @@ function generate_n_random_task(n) {
       description: `task ${i}`,
       estimated_time: estimated_time,
       registered_time: registered_time,
-      status: 'pending',
+      status: 'completed',
       created_at: created_at,
       updated_at: updated_at
     })
