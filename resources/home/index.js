@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports.config = require('./config')
+export const config = require('./config')
 
 // '.- -- -.. --.'

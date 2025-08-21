@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   req.taskInRequest = {
     description: req.body.description,
     estimated_time: req.body.estimated_time,

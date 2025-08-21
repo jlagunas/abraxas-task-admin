@@ -1,11 +1,11 @@
 'use strict'
 
 require('rootpath')()
-const _ = require('lodash')
-const { to } = require('await-to-js')
+import { has, isNull } from 'lodash'
+import { to } from 'await-to-js'
 
 async function update (req, res, next) {
-  if (_.has(req, 'status') && req.status === 'fail') {
+  if (has(req, 'status') && req.status === 'fail') {
     next()
     return null
   }
@@ -23,7 +23,7 @@ async function update (req, res, next) {
     return null
   }
 
-  if (_.isNull(taskInDb)) {
+  if (isNull(taskInDb)) {
     req.message = 'Error: la tarea no existe'
     req.status_code = 404
     req.status = 'fail'
@@ -46,7 +46,7 @@ async function update (req, res, next) {
 }
 
 async function del (req, res, next) {
-  if (_.has(req, 'status') && req.status === 'fail') {
+  if (has(req, 'status') && req.status === 'fail') {
     next()
     return null
   }
@@ -64,7 +64,7 @@ async function del (req, res, next) {
     return null
   }
 
-  if (_.isNull(taskInDb)) {
+  if (isNull(taskInDb)) {
     req.message = 'Error: la tarea no existe'
     req.status_code = 404
     req.status = 'fail'
@@ -77,7 +77,9 @@ async function del (req, res, next) {
   return null
 }
 
-module.exports.update =  update
-module.exports.delete =  del
+const _update = update
+export { _update as update }
+const _delete = del
+export { _delete as delete }
 
 // '.- -- -.. --.'

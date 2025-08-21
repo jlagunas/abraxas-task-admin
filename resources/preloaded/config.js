@@ -1,9 +1,9 @@
 'use strict'
 
 require('rootpath')()
-const Model = require('resources/task/model')
+import Model from 'resources/task/model'
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   req.Model = Model(__db)
 
   return next()

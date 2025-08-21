@@ -1,8 +1,8 @@
 'use strict'
 
-module.exports.config = require('./config')
-module.exports.controller = require('./controller')
-module.exports.filter = require('./filter')
-module.exports.validator = require('./validator')
+export const config = require('./config')
+export const controller = require('./controller')
+export const filter = require('./filter')
+export const validator = require('./validator')
 
 // '.- -- -.. --.'

@@ -1,9 +1,9 @@
 'use strict'
 
 require('rootpath')()
-const Model = require('./model')
+import Model from './model'
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   req.Model = Model(__db)
 
   return next()

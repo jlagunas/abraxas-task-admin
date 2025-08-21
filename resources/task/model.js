@@ -1,25 +1,25 @@
 'use strict'
-const _ = require('lodash')
-const Sequelize = require('sequelize')
+import { isNaN, isFinite } from 'lodash'
+import { INTEGER, STRING, ENUM, DATE, NOW } from 'sequelize'
 
 function is_alphanumeric(field) {
   return ((/^([a-zA-Z0-9 ]+)$/).test(field))
 }
 
 function is_positive_numeric(field) {
-  return (!_.isNaN(parseInt(field) && _.isFinite(field))) && field >= 0
+  return (!isNaN(parseInt(field) && isFinite(field))) && field >= 0
 }
 
 const Task = (db) => {
   return db.define('tasks', {
     id: {
-      type: Sequelize.INTEGER(11),
+      type: INTEGER(11),
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
     },
     description: {
-      type: Sequelize.STRING,
+      type: STRING,
       allowNull: false,
       validate: {
         is_alphanumeric: function(description) {
@@ -30,7 +30,7 @@ const Task = (db) => {
       }
     },
     estimated_time: {
-      type: Sequelize.INTEGER(11),
+      type: INTEGER(11),
       defaultValue: 0,
       allowNull: false,
       validate: {
@@ -42,7 +42,7 @@ const Task = (db) => {
       }
     },
     registered_time: {
-      type: Sequelize.INTEGER(11),
+      type: INTEGER(11),
       defaultValue: 0,
       allowNull: false,
       validate: {
@@ -54,19 +54,19 @@ const Task = (db) => {
       }
     },
     status: {
-      type: Sequelize.ENUM('pending', 'completed'),
+      type: ENUM('pending', 'completed'),
       allowNull: true,
       defaultValue: 'pending'
     },
     created_at: {
-      type: Sequelize.DATE,
+      type: DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW
+      defaultValue: NOW
     },
     updated_at: {
-      type: Sequelize.DATE,
+      type: DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW
+      defaultValue: NOW
     }
   },
   {
@@ -74,6 +74,6 @@ const Task = (db) => {
   })
 }
 
-module.exports = Task
+export default Task
 
 // '.- -- -.. --.'

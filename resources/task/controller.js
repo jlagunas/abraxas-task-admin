@@ -1,26 +1,26 @@
 'use strict'
 
 require('rootpath')()
-const _ = require('lodash')
-const sequelize = require('sequelize')
-const { to } = require('await-to-js')
+import { has } from 'lodash'
+import { Op } from 'sequelize'
+import { to } from 'await-to-js'
 
 function get_where_filters(query) {
   if (query.q && query.q !== '') {
     return {
-      description: { [sequelize.Op.like]: `%${query.q}%` } }
+      description: { [Op.like]: `%${query.q}%` } }
   }
 
   if (query.status && query.status !== '') {
     return {
-      status: { [sequelize.Op.like]: `%${query.status}%` } }
+      status: { [Op.like]: `%${query.status}%` } }
   }
 
   return {}
 }
 
 async function destroy (req, res, next) {
-  if (_.has(req, 'status') && req.status === 'fail') {
+  if (has(req, 'status') && req.status === 'fail') {
     next()
     return null
   }
@@ -48,7 +48,7 @@ async function destroy (req, res, next) {
 }
 
 async function update (req, res, next) {
-  if (_.has(req, 'status') && req.status === 'fail') {
+  if (has(req, 'status') && req.status === 'fail') {
     next()
     return null
   }
@@ -80,7 +80,7 @@ async function update (req, res, next) {
 }
 
 async function create (req, res, next) {
-  if (_.has(req, 'status') && req.status === 'fail') {
+  if (has(req, 'status') && req.status === 'fail') {
     next()
     return null
   }
@@ -119,7 +119,7 @@ async function create (req, res, next) {
 }
 
 async function get (req, res, next) {
-  if (_.has(req, 'status') && req.status === 'fail') {
+  if (has(req, 'status') && req.status === 'fail') {
     next()
     return null
   }
@@ -150,9 +150,13 @@ async function get (req, res, next) {
   return null
 }
 
-module.exports.create =  create
-module.exports.update =  update
-module.exports.get =  get
-module.exports.destroy =  destroy
+const _create = create
+export { _create as create }
+const _update = update
+export { _update as update }
+const _get = get
+export { _get as get }
+const _destroy = destroy
+export { _destroy as destroy }
 
 // '.- -- -.. --.'
